@@ -13,10 +13,16 @@ function ProductView({ products }) {
   // console.log("setSelectedProduct: ", setSelectedProduct)
   console.log(selectedProduct);
   useEffect(() => {
-    setSelectedProduct('');
+    console.log(`sideOpen CHANGED TO`, sideOpen);
+    if (!sideOpen)
+      setSelectedProduct('');
 }, [sideOpen]);
+
   useEffect(()=> {
-    setSideOpen(true)
+    console.log(`selectedProduct CHANGED TO`, selectedProduct);
+    if (selectedProduct)
+      setSideOpen(true);
+
   }, [selectedProduct]);
 
 
