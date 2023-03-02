@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductListItem from "../ProductListItem";
 import ProductDetails from "../ProductDetails";
 import './ProductView.css'
@@ -12,6 +12,14 @@ function ProductView({ products }) {
   const [selectedProduct, setSelectedProduct] = useState('');
   // console.log("setSelectedProduct: ", setSelectedProduct)
   console.log(selectedProduct);
+  useEffect(() => {
+    setSelectedProduct('');
+}, [sideOpen]);
+  useEffect(()=> {
+    setSideOpen(true)
+  }, [selectedProduct]);
+
+
   return (
     <div className="product-view">
       <div className="product-main-area">
@@ -25,7 +33,7 @@ function ProductView({ products }) {
               onClick={() => setSelectedProduct(item)}
               // if selectedProduct is the same as the item. highlight it
               isSelected = {item.id === selectedProduct.id}
-              
+
             />
           )}
         </div>
